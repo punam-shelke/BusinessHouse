@@ -14,4 +14,8 @@ public class Bank {
     public int getBalance() {
         return balance;
     }
+
+    public void debit(int amount) {
+        balance -= amount;
+    }
 }
