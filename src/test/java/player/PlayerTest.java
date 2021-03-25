@@ -14,4 +14,13 @@ class PlayerTest {
 
         assertThat(player.getBalance(),is(1100));
     }
+
+    @Test
+    void givenAmount_whenCalledDebit_thenShouldSubtractAmountFromBalance() {
+        final Player player = new Player();
+
+        player.debit(100);
+
+        assertThat(player.getBalance(),is(900));
+    }
 }
