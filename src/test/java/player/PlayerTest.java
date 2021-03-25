@@ -48,4 +48,16 @@ class PlayerTest {
         assertThat(player.getBalance(),is(1100));
         assertThat(bank.getBalance(),is(4900));
     }
+
+    @Test
+    void givenAmount_whenPayRentToPlayer_thenShouldCreditToOtherPlayer() {
+        final Bank bank = new Bank();
+        final Player player = new Player(bank);
+        final Player anotherPlayer = new Player(bank);
+
+        player.payRent(anotherPlayer,100);
+
+        assertThat(player.getBalance(),is(900));
+        assertThat(anotherPlayer.getBalance(),is(1100));
+    }
 }

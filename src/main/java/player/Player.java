@@ -32,4 +32,9 @@ public class Player {
         credit(amount);
         bank.debit(amount);
     }
+
+    public void payRent(Player player, int rent) {
+        debit(rent);
+        player.credit(rent);
+    }
 }
