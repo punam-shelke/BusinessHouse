@@ -1,9 +1,13 @@
 package player;
 
+import bank.Bank;
+
 public class Player {
+    private final Bank bank;
     private int balance;
 
-    public Player() {
+    public Player(Bank bank) {
+        this.bank = bank;
         balance = 1000;
     }
 
@@ -17,5 +21,10 @@ public class Player {
 
     public void debit(int amount) {
         balance -= amount;
+    }
+
+    public void transferToBank(int amount) {
+        debit(amount);
+        bank.credit(amount);
     }
 }
