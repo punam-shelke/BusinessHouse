@@ -27,4 +27,9 @@ public class Player {
         debit(amount);
         bank.credit(amount);
     }
+
+    public void transferToPlayer(int amount) {
+        credit(amount);
+        bank.debit(amount);
+    }
 }
