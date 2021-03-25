@@ -33,4 +33,8 @@ public enum HotelState {
 
         return nextState.getValue() - currentState.getValue();
     }
+
+    public HotelState getUpgradeState() {
+        return values()[ordinal()+1];
+    }
 }

@@ -2,8 +2,7 @@ package cell;
 
 import org.junit.jupiter.api.Test;
 
-import static cell.HotelState.GOLD;
-import static cell.HotelState.SILVER;
+import static cell.HotelState.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -20,5 +19,19 @@ class HotelStateTest {
         final int delta = GOLD.getDelta();
 
         assertThat(delta,is(200));
+    }
+
+    @Test
+    void givenHotelState_whenAskedUpgradeForSilver_shouldComputeAsGold() {
+        final HotelState upgradeState = SILVER.getUpgradeState();
+
+        assertThat(upgradeState,is(GOLD));
+    }
+
+    @Test
+    void givenHotelState_whenAskedUpgradeForGold_shouldComputeAsPlatinum() {
+        final HotelState upgradeState = GOLD.getUpgradeState();
+
+        assertThat(upgradeState,is(PLATINUM));
     }
 }
