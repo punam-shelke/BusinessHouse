@@ -54,4 +54,49 @@ class HotelIntegrationTest {
         assertThat(bank.getBalance(), is(5500));
     }
 
+    @Test
+    void givenSilverHotelOwner_whenAnotherPlayerComes_ThenShouldPayRent() {
+        final Hotel hotel = new Hotel();
+        final Bank bank = new Bank();
+        final Player player = new Player(bank);
+        final Player anotherPlayer = new Player(bank);
+
+        hotel.play(player);
+        hotel.play(anotherPlayer);
+
+        assertThat(player.getBalance(), is(850));
+        assertThat(anotherPlayer.getBalance(), is(950));
+    }
+
+    @Test
+    void givenGoldHotelWithOwner_whenAnotherPlayerComes_ThenShouldPayRent() {
+        final Hotel hotel = new Hotel();
+        final Bank bank = new Bank();
+        final Player player = new Player(bank);
+        hotel.play(player);
+        hotel.play(player);
+        final Player anotherPlayer = new Player(bank);
+
+        hotel.play(anotherPlayer);
+
+        assertThat(player.getBalance(), is(850));
+        assertThat(anotherPlayer.getBalance(), is(850));
+    }
+
+    @Test
+    void givenPlatinumHotelWithOwner_whenAnotherPlayerComes_ThenShouldPayRent() {
+        final Hotel hotel = new Hotel();
+        final Bank bank = new Bank();
+        final Player player = new Player(bank);
+        hotel.play(player);
+        hotel.play(player);
+        hotel.play(player);
+        final Player anotherPlayer = new Player(bank);
+
+        hotel.play(anotherPlayer);
+
+
+        assertThat(player.getBalance(), is(800));
+        assertThat(anotherPlayer.getBalance(), is(700));
+    }
 }
