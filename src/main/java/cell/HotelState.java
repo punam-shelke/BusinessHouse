@@ -35,6 +35,6 @@ public enum HotelState {
     }
 
     public HotelState getUpgradeState() {
-        return values()[ordinal()+1];
+        return values()[ordinal() + 1];
     }
 }

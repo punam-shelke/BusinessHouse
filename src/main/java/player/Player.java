@@ -5,10 +5,12 @@ import bank.Bank;
 public class Player {
     private final Bank bank;
     private int balance;
+    private int position;
 
     public Player(Bank bank) {
         this.bank = bank;
         balance = 1000;
+        position = -1;
     }
 
     public void credit(int amount) {
@@ -36,5 +38,13 @@ public class Player {
     public void payRent(Player player, int rent) {
         debit(rent);
         player.credit(rent);
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

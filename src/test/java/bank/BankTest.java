@@ -12,7 +12,7 @@ class BankTest {
 
         bank.credit(100);
 
-        assertThat(bank.getBalance(),is(5100));
+        assertThat(bank.getBalance(), is(5100));
     }
 
     @Test
@@ -21,6 +21,6 @@ class BankTest {
 
         bank.debit(100);
 
-        assertThat(bank.getBalance(),is(4900));
+        assertThat(bank.getBalance(), is(4900));
     }
 }

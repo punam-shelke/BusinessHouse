@@ -14,7 +14,7 @@ class PlayerTest {
 
         player.credit(100);
 
-        assertThat(player.getBalance(),is(1100));
+        assertThat(player.getBalance(), is(1100));
     }
 
     @Test
@@ -24,7 +24,7 @@ class PlayerTest {
 
         player.debit(100);
 
-        assertThat(player.getBalance(),is(900));
+        assertThat(player.getBalance(), is(900));
     }
 
     @Test
@@ -34,8 +34,8 @@ class PlayerTest {
 
         player.transferToBank(100);
 
-        assertThat(player.getBalance(),is(900));
-        assertThat(bank.getBalance(),is(5100));
+        assertThat(player.getBalance(), is(900));
+        assertThat(bank.getBalance(), is(5100));
     }
 
     @Test
@@ -45,8 +45,8 @@ class PlayerTest {
 
         player.transferToPlayer(100);
 
-        assertThat(player.getBalance(),is(1100));
-        assertThat(bank.getBalance(),is(4900));
+        assertThat(player.getBalance(), is(1100));
+        assertThat(bank.getBalance(), is(4900));
     }
 
     @Test
@@ -55,9 +55,9 @@ class PlayerTest {
         final Player player = new Player(bank);
         final Player anotherPlayer = new Player(bank);
 
-        player.payRent(anotherPlayer,100);
+        player.payRent(anotherPlayer, 100);
 
-        assertThat(player.getBalance(),is(900));
-        assertThat(anotherPlayer.getBalance(),is(1100));
+        assertThat(player.getBalance(), is(900));
+        assertThat(anotherPlayer.getBalance(), is(1100));
     }
 }
