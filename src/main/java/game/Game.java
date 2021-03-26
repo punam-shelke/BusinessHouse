@@ -18,32 +18,11 @@ public class Game {
         this.players = players;
     }
 
-    private ArrayList<Cell> getCells(String[] cells) {
-        final ArrayList<Cell> board = new ArrayList<>();
-        for (String cell : cells) {
-            switch (cell) {
-                case "J":
-                    board.add(new Jail());
-                    break;
-                case "H":
-                    board.add(new Hotel());
-                    break;
-                case "L":
-                    board.add(new Lottery());
-                    break;
-                case "E":
-                    board.add(new Empty());
-                    break;
-                default:
-            }
-        }
-        return board;
-    }
-
     public void start() {
         final int gridSize = grid.size();
         final int totalPlayers = players.size();
         final int totalOutcomes = diceOutputs.length;
+
         for (int i = 0; i < totalOutcomes; i++) {
             final Player player = players.get(i % totalPlayers);
             final int diceOutput = diceOutputs[i];
@@ -53,5 +32,14 @@ public class Game {
             final Cell cell = grid.get(newPosition);
             cell.play(player);
         }
+    }
+
+    private ArrayList<Cell> getCells(String[] cells) {
+        final ArrayList<Cell> board = new ArrayList<>();
+        for (String cell : cells) {
+            final InputCell inputCell = InputCell.valueOf(cell);
+            board.add(inputCell.getCell());
+        }
+        return board;
     }
 }
