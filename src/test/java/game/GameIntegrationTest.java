@@ -15,14 +15,14 @@ class GameIntegrationTest {
     void givenInputSetOne_whenGameIsPlayed_thenShouldHaveFinalAmountOfPlayer() {
         String[] cells = {"J", "H", "L", "H", "E", "L", "H", "L", "H", "J"};
         final int[] diceOutputs = {2, 2, 1, 4, 4, 2, 4, 4, 2, 2, 2, 1, 4, 4, 2, 4, 4, 2, 2, 2, 1};
-        final Game game = new Game();
         final Bank bank = new Bank();
         final Player player1 = new Player(bank);
         final Player player2 = new Player(bank);
         final Player player3 = new Player(bank);
         final List<Player> players = List.of(player1, player2, player3);
+        final Game game = new Game(cells, diceOutputs, players);
 
-        game.start(cells, diceOutputs, players);
+        game.start();
 
         assertThat(player1.getBalance(), is(1100));
         assertThat(player2.getBalance(), is(600));
@@ -33,14 +33,13 @@ class GameIntegrationTest {
     void givenInputSetTwo_whenGameIsPlayed_thenShouldHaveFinalAmountOfPlayer() {
         String[] cells = {"J", "H", "L", "H", "E", "L", "H", "L", "H", "J"};
         final int[] diceOutputs = {2, 2, 1, 4, 2, 3, 4, 1, 3, 2, 2, 7, 4, 7, 2, 4, 4, 2, 2, 2, 2};
-        final Game game = new Game();
         final Bank bank = new Bank();
         final Player player1 = new Player(bank);
         final Player player2 = new Player(bank);
         final Player player3 = new Player(bank);
         final List<Player> players = List.of(player1, player2, player3);
-
-        game.start(cells, diceOutputs, players);
+        final Game game = new Game(cells, diceOutputs, players);
+        game.start();
 
         assertThat(player1.getBalance(), is(650));
         assertThat(player2.getBalance(), is(750));

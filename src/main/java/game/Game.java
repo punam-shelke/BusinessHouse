@@ -7,6 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private final int[] diceOutputs;
+    private final List<Player> players;
+    private final List<Cell> grid;
+
+
+    public Game(String[] cells, int[] diceOutputs, List<Player> players) {
+        grid = getCells(cells);
+        this.diceOutputs = diceOutputs;
+        this.players = players;
+    }
+
     private ArrayList<Cell> getCells(String[] cells) {
         final ArrayList<Cell> board = new ArrayList<>();
         for (String cell : cells) {
@@ -29,8 +40,7 @@ public class Game {
         return board;
     }
 
-    public void start(String[] cells, int[] diceOutputs, List<Player> players) {
-        final ArrayList<Cell> grid = getCells(cells);
+    public void start() {
         final int gridSize = grid.size();
         final int totalPlayers = players.size();
         final int totalOutcomes = diceOutputs.length;
